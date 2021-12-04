@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MovieApp</string>
+    <string name="search">Search</string>
+    <string name="description">Description</string>
+    <string name="genres">genres</string>
+    <string name="cast">Cast</string>
+    <string name="movie_image">movie image</string>
+</resources>
