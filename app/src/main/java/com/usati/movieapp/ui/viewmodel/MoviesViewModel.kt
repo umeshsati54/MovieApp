@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.usati.movieapp.MoviesApplication
+import com.usati.movieapp.data.model.Credits
 import com.usati.movieapp.data.model.MovieResponse
 import com.usati.movieapp.data.repository.Repository
 import com.usati.movieapp.data.model.Resource
@@ -28,6 +29,10 @@ class MoviesViewModel(
     var searchPageNumber = 1
     var searchMovieResponse: MovieResponse? = null
 
+    val credits: MutableLiveData<Resource<Credits>> = MutableLiveData()
+    var movieCreditsResponse: Credits? = null
+
+
     init {
         getMovies()
     }
@@ -38,6 +43,10 @@ class MoviesViewModel(
 
     fun searchMovies(searchQuery: String) = viewModelScope.launch {
         safeSearchMovieCall(searchQuery)
+    }
+
+    fun getMoviesCredits(movieId: Int) = viewModelScope.launch {
+        safeMovieCreditsCall(movieId)
     }
 
     private fun handleMovieResponse(response: Response<MovieResponse>): Resource<MovieResponse> {
@@ -74,6 +83,22 @@ class MoviesViewModel(
         return Resource.Error(response.message())
     }
 
+    private fun handleMovieCreditResponse(response: Response<Credits>): Resource<Credits> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                if (movieCreditsResponse == null) {
+                    movieCreditsResponse = resultResponse
+                } else {
+                    val oldMovies = movieCreditsResponse?.cast
+                    val newMovies = resultResponse.cast
+                    oldMovies?.addAll(newMovies)
+                }
+                return Resource.Success(movieCreditsResponse ?: resultResponse)
+            }
+        }
+        return Resource.Error(response.message())
+    }
+
     private suspend fun safeMovieCall() {
         movies.postValue(Resource.Loading())
         try {
@@ -104,6 +129,23 @@ class MoviesViewModel(
             when (t) {
                 is IOException -> searchMovies.postValue(Resource.Error("Network Failure"))
                 else -> searchMovies.postValue(Resource.Error(t.message.toString()))
+            }
+        }
+    }
+
+    private suspend fun safeMovieCreditsCall(movieId: Int) {
+        credits.postValue(Resource.Loading())
+        try {
+            if (isConnected()) {
+                val response = repository.getMovieCredits(movieId)
+                credits.postValue(handleMovieCreditResponse(response))
+            } else {
+                credits.postValue(Resource.Error("No internet connection"))
+            }
+        } catch (t: Throwable) {
+            when (t) {
+                is IOException -> credits.postValue(Resource.Error("Network Failure"))
+                else -> credits.postValue(Resource.Error(t.message.toString()))
             }
         }
     }
