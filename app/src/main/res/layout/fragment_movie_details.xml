@@ -16,7 +16,7 @@
             android:layout_width="130dp"
             android:layout_height="180dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             app:cardElevation="0dp"
             app:layout_constraintCircleRadius="10dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:maxLines="3"
@@ -113,8 +113,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="2dp"
+            android:layout_marginTop="15dp"
             android:ellipsize="end"
             android:lines="1"
             android:text="@string/description"
@@ -139,6 +138,121 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvHeadingDescription"
             tools:ignore="SpUsage" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvHeadingPC"-->
+<!--            style="@style/TextAppearance.AppCompat.Headline"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginEnd="2dp"-->
+<!--            android:ellipsize="end"-->
+<!--            android:lines="1"-->
+<!--            android:text="Production Company"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="18dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvDescription"-->
+<!--            tools:ignore="SpUsage" />-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rvPC"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:ellipsize="end"-->
+<!--            android:text="@string/description"-->
+<!--            android:textColor="@android:color/darker_gray"-->
+<!--            android:textSize="16sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvHeadingPC"-->
+<!--            tools:ignore="SpUsage" />-->
+        <TextView
+            android:id="@+id/tvHeadingCast"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="Casts"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"
+            tools:ignore="SpUsage" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCast"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:text="@string/description"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvHeadingCast"
+            tools:ignore="SpUsage" />
+
+        <Button
+            android:id="@+id/btnReviews"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="Reviews"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvCast"
+            tools:ignore="SpUsage" />
+
+        <TextView
+            android:id="@+id/tvHeadingSimilarMovies"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="Similar Movies"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnReviews"
+            tools:ignore="SpUsage" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSimilarMovies"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:text="@string/description"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvHeadingSimilarMovies"
+            tools:ignore="SpUsage" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </androidx.core.widget.NestedScrollView>

@@ -8,9 +8,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.usati.movieapp.MoviesApplication
-import com.usati.movieapp.data.model.MovieResponse
+import com.usati.movieapp.data.model.*
 import com.usati.movieapp.data.repository.Repository
-import com.usati.movieapp.data.model.Resource
 import kotlinx.coroutines.launch
 import okio.IOException
 import retrofit2.Response
@@ -27,6 +26,7 @@ class MoviesViewModel(
     val searchMovies: MutableLiveData<Resource<MovieResponse>> = MutableLiveData()
     var searchPageNumber = 1
     var searchMovieResponse: MovieResponse? = null
+
 
     init {
         getMovies()

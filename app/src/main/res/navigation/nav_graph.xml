@@ -9,39 +9,61 @@
     <fragment
         android:id="@+id/movieListFragment"
         android:name="com.usati.movieapp.ui.fragment.MovieListFragment"
-        android:label="MovieListFragment" >
+        android:label="MovieListFragment">
         <action
             android:id="@+id/action_movieListFragment_to_searchMovieFragment"
             app:destination="@id/searchMovieFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_movieListFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/searchMovieFragment"
         android:name="com.usati.movieapp.ui.fragment.SearchMovieFragment"
-        android:label="SearchMovieFragment" >
+        android:label="SearchMovieFragment">
         <action
             android:id="@+id/action_searchMovieFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="com.usati.movieapp.ui.fragment.MovieDetailsFragment"
         android:label="fragment_movie_details"
-        tools:layout="@layout/fragment_movie_details" >
+        tools:layout="@layout/fragment_movie_details">
+        <argument
+            android:name="movie"
+            app:argType="com.usati.movieapp.data.model.Result" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_self"
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_to_movieReviewsFragment"
+            app:destination="@id/movieReviewsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieReviewsFragment"
+        android:name="com.usati.movieapp.ui.fragment.MovieReviewsFragment"
+        android:label="MovieReviewsFragment">
         <argument
             android:name="movie"
             app:argType="com.usati.movieapp.data.model.Result" />
