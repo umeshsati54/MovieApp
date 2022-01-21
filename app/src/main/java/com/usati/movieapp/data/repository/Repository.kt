@@ -9,6 +9,13 @@ class Repository {
     suspend fun searchMovie(pageNumber: Int, searchQuery: String) =
         RetrofitInstance.api.searchMovies(pageNumber, searchQuery)
 
-    suspend fun getMovieCredits(movieId: Int) =
+    fun getMovieCredits(movieId: Int) =
         RetrofitInstance.api.getMovieCredits(movieId)
+
+    fun getSimilarMovie(movieId: Int) =
+        RetrofitInstance.api.getSimilarMovie(movieId)
+
+    fun getMovieReviews(movieId: Int) =
+        RetrofitInstance.api.getMovieReviews(movieId)
+
 }

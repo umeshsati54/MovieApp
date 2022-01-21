@@ -7,10 +7,10 @@ import com.smarteist.autoimageslider.SliderViewAdapter
 import com.usati.movieapp.data.model.Result
 import com.usati.movieapp.databinding.CoverImageBinding
 import com.usati.movieapp.utils.Constants
-import kotlinx.android.synthetic.main.flipper_items.view.*
 
 
-class SliderAdapter(private val movies: MutableList<Result>) : SliderViewAdapter<SliderAdapter.Holder>() {
+class SliderAdapter(private val movies: MutableList<Result>) :
+    SliderViewAdapter<SliderAdapter.Holder>() {
     inner class Holder(var binding: CoverImageBinding) : SliderViewAdapter.ViewHolder(binding.root)
 
     override fun getCount(): Int {
@@ -25,18 +25,13 @@ class SliderAdapter(private val movies: MutableList<Result>) : SliderViewAdapter
     override fun onBindViewHolder(viewHolder: Holder?, position: Int) {
         val movie = movies[position]
         viewHolder?.binding?.apply {
-            //Glide.with(ivBanner.context).load(image).into(ivBanner)
-            Glide.with(ivBanner.context).load(Constants.IMAGE_URL + movie.backdrop_path).into(ivBanner)
+            Glide.with(ivBanner.context).load(Constants.IMAGE_URL + movie.backdrop_path)
+                .into(ivBanner)
             ivBanner.setOnClickListener {
                 onItemClickListener?.let {
                     it(movie)
                 }
             }
-//            setOnClickListener {
-//                onItemClickListener?.let {
-//                    it(movie)
-//                }
-//            }
         }
     }
 

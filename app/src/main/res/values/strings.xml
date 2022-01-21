@@ -5,4 +5,5 @@
     <string name="genres">genres</string>
     <string name="cast">Cast</string>
     <string name="movie_image">movie image</string>
+    <string name="star">star</string>
 </resources>

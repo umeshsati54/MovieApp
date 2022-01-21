@@ -10,29 +10,11 @@
     android:layout_height="match_parent"
     android:background="#1B1A1A">
 
-
-    <!--        <AdapterViewFlipper-->
-    <!--            android:id="@+id/adapterViewFlipper"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="200dp"-->
-    <!--            android:padding="10dp"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toTopOf="parent">-->
-
-    <!--        </AdapterViewFlipper>-->
-
-
-    <!--    android:layout_marginStart="10dp"-->
-    <!--    android:layout_marginTop="10dp"-->
-    <!--    android:layout_marginEnd="10dp"-->
-    <!--    android:layout_marginBottom="10dp"-->
     <com.smarteist.autoimageslider.SliderView
         android:id="@+id/image_slider"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:padding="10dp"
-        app:sliderIndicatorEnabled="false"
         app:layout_constraintBottom_toTopOf="@+id/tvErrorList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +23,7 @@
         app:sliderAutoCycleDirection="back_and_forth"
         app:sliderAutoCycleEnabled="true"
         app:sliderIndicatorAnimationDuration="800"
+        app:sliderIndicatorEnabled="false"
         app:sliderIndicatorGravity="center_horizontal|bottom"
         app:sliderIndicatorMargin="5dp"
         app:sliderIndicatorOrientation="horizontal"

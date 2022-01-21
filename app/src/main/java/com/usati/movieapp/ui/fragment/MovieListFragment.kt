@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
 import com.usati.movieapp.R
@@ -19,7 +18,6 @@ import com.usati.movieapp.data.model.MovieResponse
 import com.usati.movieapp.data.model.Resource
 import com.usati.movieapp.data.model.Result
 import com.usati.movieapp.ui.MainActivity
-import com.usati.movieapp.ui.adapter.FlipperAdapter
 import com.usati.movieapp.ui.adapter.MoviesAdapter
 import com.usati.movieapp.ui.adapter.SliderAdapter
 import com.usati.movieapp.ui.viewmodel.MoviesViewModel
@@ -34,7 +32,6 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
     lateinit var viewModel: MoviesViewModel
     lateinit var moviesAdapter: MoviesAdapter
-    lateinit var adapter: FlipperAdapter
     lateinit var sliderView: SliderView
     lateinit var sliderAdapter: SliderAdapter
 
@@ -52,7 +49,7 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
         val service = RetrofitInstance.api
         val call: Call<MovieResponse> = service.getMoviesFlipper()
-        //making the call
+
         call.enqueue(object : Callback<MovieResponse?> {
             override fun onResponse(
                 call: Call<MovieResponse?>?,
@@ -64,7 +61,6 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
                 sliderView = activity?.findViewById(R.id.image_slider)!!
                 sliderAdapter = SliderAdapter(movies!!)
                 sliderView.setSliderAdapter(sliderAdapter)
-                //sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM)
                 sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION)
                 sliderView.startAutoCycle()
                 sliderAdapter.setOnItemClickListener {
@@ -76,22 +72,6 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
                         bundle
                     )
                 }
-
-                //creating adapter object
-                adapter = FlipperAdapter(context!!, movies!!)
-
-//                adapterViewFlipper.adapter = adapter
-//                adapterViewFlipper.flipInterval = 2000
-//                adapterViewFlipper.startFlipping()
-//                adapter.setOnItemClickListener {
-//                    val bundle = Bundle().apply {
-//                        putSerializable("movie", it)
-//                    }
-//                    findNavController().navigate(
-//                        R.id.action_movieListFragment_to_movieDetailsFragment,
-//                        bundle
-//                    )
-//                }
             }
 
             override fun onFailure(call: Call<MovieResponse?>?, t: Throwable) {
@@ -199,16 +179,6 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
             addOnScrollListener(this@MovieListFragment.scrollListener)
         }
     }
-
-//    private fun setupSliderView(images: ArrayList<String>) {
-//        sliderView = activity?.findViewById(R.id.image_slider)!!
-//        sliderAdapter = SliderAdapter(images)
-//        sliderView.setSliderAdapter(sliderAdapter)
-//        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM)
-//        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION)
-//        sliderView.startAutoCycle()
-//
-//    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_main, menu)

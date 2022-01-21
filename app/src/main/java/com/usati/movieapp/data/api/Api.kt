@@ -16,8 +16,7 @@ interface Api {
         @Query("api_key") apiKey: String = API_KEY
     ): Response<MovieResponse>
 
-//    https://api.themoviedb.org/3/search/movie?page=2&query=batman&api_key=2ba9bca648dc0bcba720d09021b80304
-
+    //https://api.themoviedb.org/3/search/movie?page=2&query=batman&api_key=2ba9bca648dc0bcba720d09021b80304
     @GET("3/search/movie")
     suspend fun searchMovies(
         @Query("page") page: Int = 1,
@@ -33,29 +32,22 @@ interface Api {
 
     //https://api.themoviedb.org/3/movie/45162/credits?api_key=2ba9bca648dc0bcba720d09021b80304
     @GET("3/movie/{movie_id}/credits")
-    suspend fun getMovieCredits(
+    fun getMovieCredits(
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String = API_KEY
-    ): Response<Credits>
+    ): Call<Credits>
 
     //https://api.themoviedb.org/3/movie/471474/similar?page=2&api_key=2ba9bca648dc0bcba720d09021b80304
     @GET("3/movie/{movie_id}/similar")
-    suspend fun getSimilarMovie(
+    fun getSimilarMovie(
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String = API_KEY
-    ): Response<MovieResponse>
-
-    //https://api.themoviedb.org/3/movie/471474?api_key=2ba9bca648dc0bcba720d09021b80304
-    @GET("3/movie/{movie_id}")
-    suspend fun getMovieDetails(
-        @Path("movie_id") movieId: Int,
-        @Query("api_key") apiKey: String = API_KEY
-    ): Response<MovieDetails>
+    ): Call<MovieResponse>
 
     //https://api.themoviedb.org/3/movie/471474/reviews?page=1&api_key=2ba9bca648dc0bcba720d09021b80304
     @GET("3/movie/{movie_id}/reviews")
-    suspend fun getMovieReviews(
+    fun getMovieReviews(
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String = API_KEY
-    ): Response<MovieReviews>
+    ): Call<MovieReviews>
 }
